@@ -8254,6 +8254,39 @@ h1, h2, h3, h4, h5,
 .call-cta__text small{ display:block; font-size:13px; opacity:.85; line-height:1; }
 .call-cta__text strong{ display:block; font-weight:800; font-size:clamp(18px,2.5vw,28px); }
 
+.call-cta2{
+  display:inline-flex; align-items:center; gap:12px;
+  background:white; color:#fff; text-decoration:none;
+  padding:12px 18px; border-radius:14px;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+  width: max-content;
+}
+.call-cta2__icon{ width:42px; height:42px; object-fit:contain; }
+.call-cta2__text small{ display:block; font-size:13px; opacity:.85; line-height:1; color: black; font-weight: 600;}
+.call-cta2__text strong{ display:block; font-weight:800; font-size:clamp(18px,2.5vw,28px); color: red;}
+/* Mobilde CTA'yı büyüt */
+@media (max-width: 640px) {
+  .call-cta2{
+    /* kutuyu genel olarak büyüt */
+   padding: 23px 40px;
+        gap: 30px;
+        border-radius: 18px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, .22);
+  }
+  .call-cta2__icon{
+    width: 56px;
+    height: 56px;
+  }
+  .call-cta2__text small{
+    font-size: 15px;   /* “Çağrı Destek Hattı” */
+    font-weight: 600;
+  }
+  .call-cta2__text strong{
+    /* numarayı daha büyük göster */
+    font-size: clamp(22px, 7vw, 34px);
+  }
+}
+
 /* Yükseklik ve yığın davranışı (mobil) */
 @media (max-width: 991.98px){
   .hero-wrap{ height:auto; }
@@ -8584,7 +8617,7 @@ h1, h2, h3, h4, h5,
 .ftco-counter {
   overflow-x: hidden;
   position: relative;
-  background: #f3e53d; }
+  background: #33313b; }
   @media (min-width: 992px) {
     .ftco-counter {
       padding-left: 30px;
