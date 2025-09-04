@@ -8050,13 +8050,13 @@ h1, h2, h3, h4, h5,
       color: #fff; }
 
 .ftco-navbar-light {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: white !important;
   position: absolute;
-  top: 28px;
   left: 0;
   right: 0;
+  top: 0;
   z-index: 3;
-  padding: 0; }
+  }
   @media (max-width: 991.98px) {
     .ftco-navbar-light {
       background: #fff;
@@ -8067,7 +8067,7 @@ h1, h2, h3, h4, h5,
     color: #fff;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 1; }
     .ftco-navbar-light .navbar-brand span {
       color: #f3e53d;
@@ -8160,10 +8160,10 @@ h1, h2, h3, h4, h5,
         background: #2b98f0;
         border-radius: 4px; } }
   .ftco-navbar-light .navbar-nav > .nav-item.active > a {
-    color: #f3e53d; }
+    color: #0091C9; }
     .ftco-navbar-light .navbar-nav > .nav-item.active > a:before {
       visibility: visible;
-      background-color: #f3e53d;
+      background-color: #0091C9;
       -webkit-transform: scaleX(1);
       -ms-transform: scaleX(1);
       transform: scaleX(1); }
@@ -8183,38 +8183,91 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-toggler:focus {
       outline: none !important; }
 
-.hero-wrap {
-  width: 100%;
-  height: 100%;
-  position: inherit;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
-  position: relative; }
-  @media (max-width: 1199.98px) {
-    .hero-wrap {
-      background-position: center center !important; } }
-  .hero-wrap .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    content: '';
-    opacity: .3;
-    background: #000000; }
-  .hero-wrap.hero-wrap-2 {
-    height: 500px; }
-    .hero-wrap.hero-wrap-2 .overlay {
-      opacity: .3; }
-    .hero-wrap.hero-wrap-2 .slider-text {
-      height: 500px; }
+
+
+/* SOL YARI: mavi zemin */
+.hero-left{
+  background:#0b3d9a; /* senin mavi tonun */
+  color:#fff; overflow:hidden;
+}
+
+
+
+/* Sol içerik: metin/CTA mevcut haliyle burada */
+.hero-content{
+  position:relative; z-index:1;
+  max-width:720px; margin-inline:auto;
+  padding: clamp(24px,4vw,48px);
+  display:flex; flex-direction:column; justify-content:center; height:100%;
+}
+
+
+/* Sağ yarı: beyaz zemin ve görsel */
+.hero-right{ background:#fff; overflow:hidden; }
+.hero-photo{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;          /* taşma yerine kırp */
+  object-position: 50% 10%;  /* kafa kadrajda kalsın; gerekirse ayarla */
+  display:block;
+}
+
+.hero-inner{
+  display:flex;
+  width:100%;
+  min-height: 1000px; 
+}
+
+/* 2 eşit sütun */
+.hero-left, .hero-right{
+  position:relative;
+  flex:0 0 50%;
+  width:50%;
+}
+
+/* sol arka plan (mavi + düşük opak görsel kullanıyorsan) */
+.hero-left{ background:#0b3d9a; color:#fff; }
+/* arka plan görsel + yarı opak mavi overlay */
+.hero-left-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+
+  /* Yolu CSS dosyasına göre ver! */
+  /* style.css -> /css/style.css ise: ../images/bg_1.png  */
+  background-image:
+      linear-gradient(0deg, rgb(6 32 96 / 98%), rgb(6 32 96 / 86%)), url(../images/bg_1.png);
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+/* CTA (sen zaten kullanıyorsun; örnek stiller) */
+.call-cta{
+  display:inline-flex; align-items:center; gap:12px;
+  background:#1d4ed8; color:#fff; text-decoration:none;
+  padding:12px 18px; border-radius:14px;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+  width: max-content;
+}
+.call-cta__icon{ width:42px; height:42px; object-fit:contain; }
+.call-cta__text small{ display:block; font-size:13px; opacity:.85; line-height:1; }
+.call-cta__text strong{ display:block; font-weight:800; font-size:clamp(18px,2.5vw,28px); }
+
+/* Yükseklik ve yığın davranışı (mobil) */
+@media (max-width: 991.98px){
+  .hero-wrap{ height:auto; }
+  .hero-inner{ flex-direction:column; min-height: auto;}
+  .hero-left{ width:100%; }
+  .hero-right{ display:none; }  /* istersen görseli altta göster */
+  .imgNone {display: none;}
+}
 
 .slider-text h1 {
   font-size: 40px;
   color: #fff;
   line-height: 1.2;
-  font-weight: 400;
+  font-weight: 500;
   font-family: "Roboto", Arial, sans-serif; }
   @media (max-width: 991.98px) {
     .slider-text h1 {
@@ -9793,10 +9846,23 @@ textarea.form-control {
   50%{ transform: translateY(-2px); }
 }
 
-/* Mobilde sadece yuvarlak ikon kalsın */
 @media (max-width: 640px){
-  .contact-float{ width:56px; height:56px; padding:0; justify-content:center; border-radius:50%; }
-  .contact-float .txt{ display:none; }
+  .contact-float{
+    right: 12px; bottom: 12px;
+    padding: 8px 12px; gap: 10px;
+    border-radius: 999px;                 /* yuvarlak dikdörtgen */
+    min-width: 240px;                     /* dar ekranda da yazı sığsın */
+  }
+  .contact-float .ico{ width: 32px; height: 32px; }
+  .contact-float .txt{ display: block; }
+  .contact-float .txt small{ font-size: 12px; }
+  .contact-float .txt strong{ font-size: 18px; }
+}
+
+/* İsterseniz küçük titreşim */
+@keyframes floatUpDown{
+  0%,100%{ transform: translateY(0); }
+  50%    { transform: translateY(-2px); }
 }
 /* ---- Scoped variables ---- */
   #servis-bolgeleri{
@@ -10055,4 +10121,137 @@ textarea.form-control {
 @media (max-width: 768px){
   .srv{ display:block; }
   .srv-media{ width:100%; min-height:200px; }
+}
+
+
+
+/* Küçük ekranda resmi gizle (istersen gösterilebilir) */
+@media (max-width: 991.98px){
+  .hero-illustration{ display:none; }
+}
+
+/* Hero satırı ve container %100 yüksek olsun */
+.hero-wrap .container,
+.hero-wrap .row{ height:100%; }
+
+/* Telefon CTA */
+.call-cta{
+  display:inline-flex; align-items:center; gap:12px;
+  background: linear-gradient(135deg,#0b4db6,#0e63cf);
+  color:#fff; text-decoration:none;
+  padding:12px 18px; border-radius:14px;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.call-cta__icon{
+  width:42px; height:42px; object-fit:contain; display:block;
+  filter:none; /* ikon orijinal renk */
+}
+.call-cta__text small{
+  display:block; font-size:13px; opacity:.85; line-height:1; letter-spacing:.2px;
+}
+.call-cta__text strong{
+  display:block; font-size:clamp(18px,2.6vw,28px); line-height:1.1; font-weight:800;
+}
+
+/* Koyu arka plan üzerinde de net dursun */
+.call-cta:hover{ transform:translateY(-1px); box-shadow:0 16px 32px rgba(0,0,0,.22); }
+
+/* Dar ekranda kompaktlaşsın */
+@media (max-width: 576px){
+  .call-cta{ padding:10px 14px; gap:10px; }
+  .call-cta__icon{ width:34px; height:34px; }
+}
+
+
+/* ===== Hizmet Kart Slider ===== */
+.svc-section{padding:32px 0}
+.svc-head{max-width:1200px;margin:0 auto 12px;padding:0 16px}
+.svc-sub{color:#80B52B;letter-spacing:.08em;font-weight:700}
+.svc-head h2{margin:4px 0 0}
+
+.svc-slider{
+  overflow:hidden;position:relative;
+  max-width:1200px;margin:0 auto;padding:6px 0;
+}
+.svc-track{
+  display:flex;gap:24px;width:max-content;
+  animation:svc-marquee 36s linear infinite;
+}
+.svc-slider:hover .svc-track{animation-play-state:paused;}
+@keyframes svc-marquee{
+  from{ transform:translateX(0); }
+  to  { transform:translateX(-50%); }   /* içerik iki kez eklenecek */
+}
+
+/* Kart */
+.svc-card{
+  position:relative;flex:0 0 clamp(260px, 32vw, 420px);
+  aspect-ratio:16/9;border-radius:16px;overflow:hidden;
+  box-shadow:0 16px 36px rgba(17,24,39,.18);background:#111;
+  height: 350px;
+}
+.svc-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .35s ease;
+}
+.svc-card::after{ /* hafif koyuluk */
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.35));
+}
+.svc-meta{
+  position:absolute;left:10px;right:10px;bottom:10px;z-index:2;
+  background:#fff;border-radius:12px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.7rem .85rem;
+}
+.svc-title{
+  margin:0;font-weight:800;color:#111;
+  font-size:clamp(14px,1.6vw,18px);
+}
+.svc-go{
+  width:40px;height:40px;border-radius:10px;
+  display:grid;place-items:center;
+  background:#2563eb;color:#fff;text-decoration:none;
+  box-shadow:0 8px 18px rgba(37,99,235,.35);
+}
+.svc-go svg{width:20px;height:20px;display:block}
+.svc-card:hover .svc-img{ transform:scale(1.04); }
+
+/* küçük ekran */
+@media (max-width:640px){
+  .svc-track{gap:16px}
+  .svc-card{flex-basis:80vw}
+}
+/* Hız ve renkleri rahatça değiştirebilmen için değişkenler */
+:root{
+  --cta-pulse-speed: 2.6s;      /* geçiş süresi */
+  --cta-red: #ff3b3b;           /* kırmızı tonu */
+}
+/* Numaraya sürekli yumuşak renk geçişi */
+.call-cta__text strong{
+  color:#fff;                   /* başlangıç: beyaz */
+  display:inline-block;
+  font-weight:800;
+  will-change: color, text-shadow;
+  animation: phoneColor var(--cta-pulse-speed) ease-in-out infinite;
+}
+
+/* İstersen hover’da durmasını sağla (opsiyonel) */
+/* .call-cta:hover .call-cta__text strong{ animation-play-state: paused; } */
+
+@keyframes phoneColor{
+  0%,100%{
+    color:#fff;
+    text-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+  45%,55%{                      /* bir süre kırmızı kalsın */
+    color:var(--cta-red);
+    text-shadow:0 0 14px rgba(255,59,59,.6); /* hafif parlama */
+  }
+}
+
+/* Erişilebilirlik: hareket azaltmayı tercih edenlerde animasyonu kapat */
+@media (prefers-reduced-motion: reduce){
+  .call-cta__text strong{ animation:none; }
 }

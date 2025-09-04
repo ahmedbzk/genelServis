@@ -75,3 +75,52 @@
 
 
   
+
+  // Kolay düzenleme: görseller, başlıklar, linkler
+  const services = [
+    {img:'images/work-1.jpg', title:'Klima Servisi',          url:'klima.html'},
+    {img:'images/work-2.jpg', title:'Fırın Servisi',          url:'firin.html'},
+    {img:'images/work-3.jpg', title:'Televizyon Servisi',     url:'televizyon.html'},
+    {img:'images/work-4.jpg', title:'Çamaşır Makinesi Servisi', url:'camasirmakinesi.html'},
+    {img:'images/work-5.jpg', title:'Buzdolabı Servisi',      url:'buzdolabi.html'},
+    {img:'images/work-6.jpg', title:'Kurutma Makinesi Servisi', url:'kurutmamakinesi.html'},
+    {img:'images/work-7.jpg', title:'Bulaşık Makinesi Servisi', url:'bulasikmakinesi.html'},
+    {img:'images/work-8.jpg', title:'Kombi Servisi',          url:'kombi.html'},
+  ];
+
+  const track = document.getElementById('svcTrack');
+const link  = document.getElementById('svcLink');
+let active = 0; // seçili kart index'i
+
+
+  function makeGroup(items){
+    const frag = document.createDocumentFragment();
+    items.forEach(s => {
+      const card = document.createElement('article');
+      card.className = 'svc-card';
+
+      const linkImg = document.createElement('a');
+      linkImg.href = s.url; linkImg.setAttribute('aria-label', s.title);
+      const img = document.createElement('img');
+      img.src = s.img; img.alt = s.title; img.className = 'svc-img';
+      linkImg.appendChild(img);
+
+      const meta = document.createElement('div'); meta.className = 'svc-meta';
+      const h = document.createElement('h3'); h.className = 'svc-title';
+      const aTitle = document.createElement('a'); aTitle.href = s.url; aTitle.textContent = s.title; aTitle.style.textDecoration='none'; aTitle.style.color='inherit';
+      h.appendChild(aTitle);
+
+      const go = document.createElement('a'); go.className = 'svc-go'; go.href = s.url; go.setAttribute('aria-label', s.title + ' sayfasına git');
+      go.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M13 5l7 7-7 7"/>
+                      </svg>`;
+
+      meta.append(h, go);
+      card.append(linkImg, meta);
+      frag.append(card);
+    });
+    return frag;
+  }
+
+  // Sonsuz kaydırma için aynı grubu iki kez ekle
+  track.append(makeGroup(services), makeGroup(services));

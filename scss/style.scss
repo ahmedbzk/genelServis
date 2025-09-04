@@ -274,26 +274,7 @@ h1, h2, h3, h4, h5,
 	@include media-breakpoint-down(lg){
 		background-position: center center !important;
 	}
-	.overlay{
-		position: absolute;
-		// width: 50%;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		content: '';
-		opacity: .3;
-		background: $black;
-	}
-	&.hero-wrap-2{
-		height: 500px;
-		.overlay{
-			opacity: .3;
-		}
-		.slider-text{
-			height: 500px;
-		}
-	}
+
 }
 
 .slider-text{

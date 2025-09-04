@@ -1,0 +1,19 @@
+.svc-section h1{font-size:clamp(28px,3vw,42px)}
+.svc-section p{color:#5b6777;line-height:1.8}
+.svc-hotline{color:#e03131;text-decoration:none}
+.svc-hotline:hover{opacity:.85}
+
+/* liste hover */
+.svc-list .list-group-item{cursor:pointer}
+.svc-list .list-group-item:hover{background:#f6f8fb}
+
+/* çağrı kartı */
+.svc-call-card{background:linear-gradient(180deg,#f5f7fb,#e9edf4)}
+.svc-call-icon{
+  width:96px;height:96px;border-radius:50%;
+  display:grid;place-items:center;
+  background:#1e73e8;box-shadow:0 12px 30px rgba(30,115,232,.25)
+}
+.svc-call-icon svg{width:54px;height:54px}
+.svc-call-number{font-weight:700;font-size:24px;color:#111827;text-decoration:none}
+.svc-call-number:hover{color:#0d47a1}
