@@ -135,7 +135,13 @@
 										<h3 class="mb-4">İletişime Geç</h3>
 										<div id="form-message-warning" class="mb-4"></div> 
 					      	
-										<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+										<form  id="contactForm" name="contactForm" class="contactForm" action="https://formsubmit.co/info@genelservisiletisim.com.tr" method="POST" novalidate>
+											  <input type="hidden" name="_captcha" value="false">
+											<input type="hidden" name="_template" value="table">
+											<input type="hidden" name="_subject"  value="Web Sitesi - Yeni İletişim Mesajı">
+											<input type="hidden" name="_next" value="https://genelservisiletisim.com.tr/contact.html">
+
+
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
@@ -167,6 +173,7 @@
 														<div class="submitting"></div>
 													</div>
 												</div>
+												
 											</div>
 										</form>
 									</div>
@@ -193,11 +200,7 @@
 						<h2 class="footer-heading">Genel Servis İletişim</h2>
 						<p>Arızalı beyaz eşyalarınızı hızlıca onarıp evinizin konforunu geri getiriyoruz.
 Uzman ekibimiz, şeffaf fiyat ve garantili hizmetle her zaman yanınızda.</p>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-4">
-              <li class="ftco-animate"><a href="#" target="_blank"><span class="fa fa-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#" target="_blank"><span class="fa fa-instagram"></span></a></li>
-              <li class="ftco-animate"><a href="#" target="_blank"><span class="fa fa-whatsapp"></span></a></li>
-            </ul>
+						
 					</div>
 					
 					<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
@@ -245,7 +248,17 @@ Uzman ekibimiz, şeffaf fiyat ve garantili hizmetle her zaman yanınızda.</p>
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+<script>
+const f = document.getElementById('contactForm');
+f.addEventListener('submit', (e) => {
+  // HTML5 validity’yi kullan
+  if (!f.checkValidity()) { e.preventDefault(); f.reportValidity(); return; }
 
+  // Ek kontrol (örnek)
+  const msg = f.message.value.trim();
+  if (msg.length < 10) { e.preventDefault(); alert('Mesaj en az 10 karakter olmalı.'); }
+});
+</script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
